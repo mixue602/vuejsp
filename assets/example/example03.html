@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>hello world</h1>
+
+    <div id="app">
+        {{num}}
+
+        <input type="button" name="" id="" value="add" @click="add">
+    </div>
+    <input type="button" name="" id="" value="jian外部reduce" onclick="reduce()">
+    <input type="button" name="" id="" value="jian外部reduceonce" onclick="reduceonce()">
+    <input type="button" name="" id="" value="关闭事件" onclick="off()">
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function() {
+                    this.num++
+                }
+            }
+        });
+        app.$on("reduce", function() {
+            console.log("执行了外部的reduce方法");
+            this.num--;
+        });
+
+        app.$once("reduceonce", function() {
+            console.log("执行一次的方法");
+            this.num--;
+        });
+
+        function reduce() {
+            app.$emit("reduce")
+        }
+
+        function reduceonce() {
+            app.$emit("reduceonce")
+        }
+
+        function off() {
+            app.$off("reduce")
+        }
+    </script>
+</body>
+
+</html>

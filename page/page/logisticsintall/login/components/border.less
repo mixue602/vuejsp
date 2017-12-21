@@ -1,0 +1,34 @@
+.mixinfont (@font){
+ 	font-size: @font; 
+ 	[data-dpr="2"] & { font-size: @font * 2; } 
+ 	[data-dpr="3"] & { font-size: @font * 3; } 
+ }
+.user,.pwd,.phone,.vercode{
+	box-shadow: 0 1px 0 #ddd;
+	position:relative;
+	&.bor-active:before{
+		-webkit-transition: -webkit-transform 1s;
+	    transition: transform 1s;
+	    -webkit-transform: scale3d(1, 1, 1);
+	    transform: scale3d(1, 1, 1);
+	}
+	&:before{
+		content:"";
+		box-sizing: border-box;
+	 	position: absolute;
+	 	bottom: -1px;
+		left: 0;
+		height: 1px;
+		width: 100%;
+		-webkit-transform-origin: center;
+	    -ms-transform-origin: center;
+	    transform-origin: center;
+	    background: #666;
+	    -webkit-transform: scale3d(0, 0, 1);
+	    transform: scale3d(0, 0, 1);
+	}
+	input{
+		.mixinfont(15px);
+	}
+}
+

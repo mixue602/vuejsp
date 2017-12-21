@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on绑定事件</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>v-model</h1>
+
+    <div id="app">
+        原始信息：{{message}}<br>
+        <!-- 立即改变 -->
+        立即改变：<input type="text" v-model="message"><br>
+        <!-- 失去焦点才改变 -->
+        失去焦点才改变：<input type="text" v-model.lazy="message"><br>
+        <!-- 只能输入数字 -->
+        只能输入数字：<input type="text" v-model.number="message"><br>
+        <!-- 去除前后空格 -->
+        去除空格：<input type="text" v-model.trim="message"><br>
+        <hr> 文本域
+        <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+        <hr> 多选框绑定一个值
+        <input type="checkbox" name="" id="istrue" v-model="istrue">
+        <label for="istrue">{{istrue}}</label>
+        <br> 多选框绑定一个数组
+
+        <input type="checkbox" name="" id="name1" value="name1" v-model="web_names">
+        <label for="name1">name1</label>
+        <input type="checkbox" name="" id="name2" value="name2" v-model="web_names">
+        <label for="name2">name2</label>
+        <input type="checkbox" name="" id="name3" value="name3" v-model="web_names">
+        <label for="name3">name3</label>
+        <div>{{web_names}}</div>
+        <!-- 单选框 -->
+        <input type="radio" name="" value="男" id="nan" v-model="sex">
+        <label for="nan">男</label>
+        <input type="radio" name="" value="女" id="nv" v-model="sex">
+        <label for="nv">女</label>
+        <p>你选择的是：{{sex}}</p>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "50",
+                istrue: true,
+                web_names: [],
+                sex: "男"
+            }
+        })
+    </script>
+</body>
+
+</html>

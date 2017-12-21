@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>hello world</h1>
+
+    <div id="app">{{num}}
+        <input type="button" value="add" @click="add" name="" id="">
+    </div>
+
+    <script type="text/javascript">
+        var addaconsole = {
+            updated: function() {
+                console.log("数据变化为了" + this.num)
+            }
+        };
+
+        Vue.mixin({
+            updated: function() {
+                console.log("我是全局的混入数据变化为了" + this.num) //全局的最先执行，然后是混入的，再然后是原生的
+            }
+
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function() {
+                    this.num++;
+                }
+            },
+            updated: function() {
+                console.log("我是原生的update"); //原生的后执行，mixins先执行
+            },
+            mixins: [addaconsole]
+        })
+    </script>
+</body>
+
+</html>

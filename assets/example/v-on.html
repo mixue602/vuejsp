@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on绑定事件</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>hello world</h1>
+
+    <div id="app">
+        得分：{{num}}<br>
+        <input type="button" value="加分" v-on:click="jiafen">
+        <input type="button" value="减分" @click="jianfen"><br>
+        <input type="text" v-on:keyup.enter="onenter" v-model="num2">
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 50,
+                num2: "4"
+            },
+            methods: {
+                jiafen: function() {
+                    this.num++;
+                },
+                jianfen: function() {
+                    this.num--;
+                },
+                onenter: function() {
+                    this.num = this.num + parseInt(this.num2);
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

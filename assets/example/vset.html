@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>set</h1>
+
+    <div id="app">{{count}}
+
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <input type="button" value="add" onclick="add()">
+
+    <script type="text/javascript">
+        function add() {
+            // Vue.set(outdata, "count", 2) //方法1
+            // app.count++; //方法2
+            // outdata.count++; //方法3
+            app.arr[1] = "ddd";
+            Vue.set(app.arr, 1, "ddd")
+        }
+        var outdata = {
+            count: 1,
+            goods: "car",
+            arr: ["11", "22", "33"]
+        };
+        var app = new Vue({
+            el: '#app',
+            data: outdata
+        })
+    </script>
+</body>
+
+</html>

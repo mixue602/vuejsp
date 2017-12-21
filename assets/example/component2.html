@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>component 组件props 属性设置</h1>
+
+    <div id="app">
+        <vuelearn1 here="属性传值" lianxi="练习组件" lianxi-props="带-的属性,用驼峰命名方式转换" :bindprops="message"></vuelearn1>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "绑定的数据用v-bind"
+            },
+            components: {
+                "vuelearn1": {
+                    template: '<div style="color:#365;font-size：18px">我是局部组件：{{here}};{{lianxi}} ;{{lianxiProps}};{{bindprops}}</div>',
+                    props: ["here", "lianxi", "lianxiProps", "bindprops"]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
